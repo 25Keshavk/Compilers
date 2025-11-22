@@ -1,0 +1,3 @@
+IF 3 > 5 THEN
+    WRITELN(4);
+ELSE WRITELN(8);

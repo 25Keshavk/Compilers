@@ -1,0 +1,198 @@
+//@author Ms. Peregrino
+//@author Keshav Kotamraju
+//@version 9/15/2023
+
+// The List Node class is used to create a single or multiple nodes 
+// which each point to another node or null, creating a list. 
+public class ListNode
+{
+private value;
+private next;
+
+// Creates an instance of the listnode class
+// @param initValue the Nodes value
+// @param initNext the next node to point to
+public ListNode(initValue, initNext)
+{
+	value = initValue; next = initNext; 
+}
+// Gets the value the node is storing
+// @return the value
+public getValue() 
+{ 
+	return value; 
+}
+// Gets the next node
+// @return the reference to the next node
+public getNext() 
+{ 
+	return next; 
+}
+// Changes the value that the node stores
+// @param theNewValue the new value for the node
+public setValue(theNewValue) 
+{ 
+	value = theNewValue; 
+}
+// Changes the next node in the list
+// @param theNewNext the new node to point to
+public setNext(theNewNext) 
+{ 
+	next = theNewNext; 
+}
+} 
+
+//@author Keshav Kotamraju
+//@version 9/15/2023
+public class ListUtil
+{
+// gives the author and date of the code
+// @return the above information
+public author()
+{
+ 	return ("Keshav Kotamraju 9/15/2023");
+}
+// Shows the values in the list
+// @param nodus the first node of the list
+// @return all the values seperated by a space
+public show(nodus)
+{
+	if (nodus == null) //base case
+		return "";
+	if (nodus.getNext() != null) 
+ 		return nodus.getValue() + " " + this.show(nodus.getNext()); //recursive case
+	return nodus.getValue();
+}
+// Finds the size of the list
+// @param the first node of the list
+// @return the size
+public size(nodus)
+{
+ return this.sizeHelp(nodus,0);
+}
+// Helper method for size
+// @param nodus the first node
+// @param size a incrementing counter for the size
+// @return the size
+public sizeHelp( nodus, size)
+{
+if (nodus == null) //base case
+	return size;
+if (nodus.getNext() == null) //base case
+	return size+1;
+return this.sizeHelp(nodus.getNext(), 1+size); //recursive case
+}
+// Gets the value at a given index of the list
+// @param nodus the first node of the list
+// @param index the index of the wanted value
+// @return the value
+public Object get(nodus, index)
+{
+return this.getHelp(nodus, index, 0);
+
+}
+// Helper method for get
+// @param nodus the first node of the list
+// @param index the index of the wanted value
+// @param count a counter which will track the current index
+// @return the value
+public getHelp (nodus,index,count)
+{
+if (count == index) //base case
+	return nodus.getValue();
+return this.getHelp(nodus.getNext(),index, count+1); //recursive case
+}
+// Makes a List of nodes with a given value
+// @param num the number of nodes
+// @param value the value each node has
+// @return the start of the list
+// @usage list = u.makeList(2,8);
+public makeList(num, value)
+{
+if(num == 0) //base case
+	return null;
+return new ListNode(value, this.makeList(num-1,value)); //recursive case
+}
+// Adds a value to the end of the list
+// @nodus the first node of the list
+// @val the value of the node to add
+// @return the node at the start of the list
+// @usage list2 = u.add(list, 8);
+public add(nodus,val) 
+{
+	if (nodus == null) //base case
+	{
+	 ListNode tem = new ListNode(val,null);
+	 return tem;
+	}
+	nodus.setNext(this.add(nodus.getNext(), val)); //recursive case
+	return nodus;
+}
+// Removes all nodes with a given value from the list
+// @nodus the first node of the list
+// @val the value to remove
+// @return the first node of the list
+// @usage list2 = u.remove(list,2);
+public remove( nodus,val)
+{
+ if (nodus == null) //base case
+	return nodus;
+ if (nodus.getValue() == val)
+ {
+  nodus = nodus.getNext();
+  return this.remove(nodus,val); //recursive case
+ }
+ else
+ {
+  nodus.setNext(this.remove(nodus.getNext(),val)); //recursive case
+  return nodus;
+ }
+}
+// Reverses the list from forwards to backwards
+// @nodus the first node of the list
+// @return the new first node of the list
+// @usage revlist = u.reverse(list);
+public reverse (nodus)
+{
+ if (nodus == null || nodus.getNext() == null) //base case
+	return nodus;
+ next = nodus.getNext(); 
+ nodus.setNext(null);
+ end = (this.reverse(next)); //recursive case
+ next.setNext(nodus);
+	return end;  
+}	
+}
+// A class with a method that checks if a number has already been entered
+public class Memorizer
+{
+	private list;
+	// Checks if the input has been seen before and stores if it hasnt
+	// @param check the number to search for and stored
+	// @return true if number has already been seen
+	// otherwise; false
+	public seen(check)
+	{
+		has = this.have(check, list);
+		if(has)
+			return true;
+		list = new ListNode(check,list);
+		return false;
+	}
+	// Checks whether the number has been seen before
+	// @param target the number being searched for
+	// @param list the list being searched
+	// @return true if the number has been seen before
+	// otherwise;false
+	private have(target, list)
+	{
+		
+		if(list == null) //base case
+			return false;
+		if(list.getValue() == target) //base case
+			return true;
+
+		return this.have(target, list.getNext()); //recursive case
+	}
+}
+

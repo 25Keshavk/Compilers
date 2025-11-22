@@ -1,0 +1,258 @@
+// @author Keshav Kotamraju
+// @version 9/4/23
+// The Calculator class, when an object of it is instantiated, allows
+// the user to perform simple calculator functions with the output being the answer, such
+// as multiplication, checking if a number is odd. and finding the absolute value of a number.
+public class Calculator {
+    // @param num1 	the first addend
+    // @param num2	the second addend
+    // @return the sum
+    public int add(int num1, int num2)
+    {
+        return num1+num2;
+    }
+
+    // Subtracts two numbers together.
+    // @param num1 	the minuend
+    // @param num2	the subtrahend
+    // @return the difference
+    public int subtract(int num1, int num2)
+    {
+        return num1-num2;
+    }
+
+    // Multiplies two numbers together.
+    // @param num1 	the first factor
+    // @param num2	the second factor
+    // @return the product.
+    public int multiply(int num1, int num2)
+    {
+        return num1 * num2;
+    }
+    // Multiplies two numbers together.
+    // @param num1 	the square
+    // @return the square.
+    public int square(int num1)
+    {
+        return num1*num1;
+    }
+    // Multiplies two numbers together.
+    // @param num1 	the number being evaluated
+    // @return true if the number is odd;otherwise
+    //         false
+    public boolean isOdd(int num1)
+    {
+        return (num1 % 2 != 0);
+    }
+    // Finds the max of two numbers
+    // @param num1 	the first number
+    // @param num2	the second number
+    // @return whichever number is greater.
+    public int max(int num1, int num2)
+    {
+        if (num1 > num2)
+            return num1;
+        return num2;
+    }
+    // Finds the absolute value of a number
+    // @param num1 	the number being used
+    // @return the absolute value of num1
+    public int abs(int num1)
+    {
+        if (num1 > 0)
+            return num1;
+        return num1 * -1;
+
+    }
+
+
+
+
+
+}
+// The Box class, when an object of it is instantiated, allows
+// the user to get and set the value of the "box" object, and stores
+// the value given.
+public class Box
+{
+    private value;
+    // Instantiates the object of the Box class, giving it
+    // the ability to store a value.
+    // @param val the value given to the box
+    public Box(val)
+    {
+        value = val;
+    }
+    // Gets the value the box is storing.
+    // @return the value of the box
+    public getValue()
+    {
+        return value;
+    }
+    // Sets the box's value to a new number
+    // @param newValue the new Value.
+    public setValue(newValue)
+    {
+        value = newValue;
+    }
+
+}
+// The Counter class, when an object of it is instantiated, allows
+// the user to create a counter, a number that they can continually increase and reset.
+public class Counter
+{
+
+    private count;
+    // Instantiates an object of the Counter class. the count is
+    //automatically set to 0.
+    public Counter()
+    {
+        count = 0;
+    }
+    //Increases the counter by 1 each time it is called.
+    public tick()
+    {
+       count = count+ 1;
+    }
+    // Gets the counter's count.
+    // @return the counter value
+    public getCount()
+    {
+        return count;
+    }
+    // Resets the counter back to 0
+    public reset()
+    {
+        count = 0;
+    }
+
+}
+// The Flipper class, when an object of it is instantiated, allows
+// the user to change a boolean value that is stored.
+public class Flipper
+{
+
+    private val;
+    // Instantiates an object of the Flipper class. the val is
+    //automatically set to 0.
+    public Flipper()
+    {
+        val = false;
+    }
+    // Changes the value to the opposite of what it was.
+    // @return the boolean value
+    public next()
+    {
+        val = !val;
+        return val;
+    }
+
+}
+// The Flipper class, when an object of it is instantiated, allows
+// the user to get  2 consecutive numbers of the Fibbonacci sequence.
+public class Fibber
+{
+
+    private value1;
+    private value2;
+    // Instantiates an object of the Fibber class. the values are
+    //automatically set to 0 and 1 as the first 2 numbers in the sequence
+    public Fibber()
+    {
+        value1 = 0;
+        value2 = 1;
+    }
+    // Moves 1 number forward in the sequence
+    // @return the old value of the lower of the 2 numbers.
+    public next()
+    {
+        tempor = value1 + value2;;
+        out = value1;
+        value1 = value2;
+        value2 = tempor;
+        return out;
+    }
+
+}
+// The Container class, when an object of it is instantiated, allows
+// the user to create a container which, contains a value.
+public class Container
+{
+
+    private stuff;
+    // Instantiates an object of the Flipper class.
+    //@param the value stuff is set to
+    public Container(s)
+    {
+        stuff = s;
+    }
+    // Gets the value the container stores
+    // @return the value of the of stuff
+    public getStuff()
+    {
+        return stuff;
+    }
+    // Changes the value the container stores
+    // @param the new value of the of stuff
+    public setStuff(s)
+    {
+        stuff = s;
+    }
+
+}
+// The Swapper class, when an object of it is instantiated, allows
+// the user to swap two containers.
+public class Swapper
+{
+    //Swaps the two containers
+    // @param container1 the first container
+    // @param container2 the second container
+    public swap(container1, container2)
+    {
+        temp = container1.getStuff();
+        container1.setStuff(container2.getStuff());
+        container2.setStuff(temp);
+    }
+}
+
+// The Swapper class, when an object of it is instantiated,lists
+// all iterations between two bounds and allows
+// the user to go forward between the iterations
+public class Enumerator
+{
+	 private int lbo;
+	 private int rbo;
+	 private int ind;
+    // Instantiates an object of the Flipper class.
+    //@param lb the left bound
+	//@param rb the right bound
+    public Enumerator(lb,rb)
+    {
+        lbo = lb;
+		 rbo = rb;
+        ind = -1;
+         
+
+
+    }
+    // Gets the value the container stores
+    // @return true if there are more numbers after ind;
+	//  otherwise, false
+    public  hasNext()
+    {
+        return ind < (rbo-lbo);
+    }
+	// Goes to the next element in the list
+    // @return the value of the next element
+    public  next()
+    {
+	if (!this.hasNext())
+		return ("Has no more numbers");
+        ind = ind + 1;
+		 return lbo + ind;
+		 
+    }
+
+
+}
+
